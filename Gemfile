@@ -46,3 +46,6 @@ end
 
 gem 'bootstrap-sass'
 gem 'rails_config'
+
+# For parsing rss
+gem 'feedjira'
