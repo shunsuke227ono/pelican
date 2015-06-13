@@ -5,20 +5,23 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  adapter: mysql2
+  encoding: utf8
   pool: 5
-  timeout: 5000
+  username: <%= Settings.db.default.username %>
+  password: <%= Settings.db.default.password %>
+  socket: <%= Settings.db.default.socket %>
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: pelican_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: pelican_test
 
 production:
   <<: *default
