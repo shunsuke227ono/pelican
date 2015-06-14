@@ -55,3 +55,6 @@ gem 'pry-rails'
 
 gem 'mecab'
 gem 'natto'
+
+gem 'matrix'
+gem 'tf-idf-similarity'
