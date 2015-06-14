@@ -5,49 +5,21 @@ namespace :rss do
       Nokogiri::HTML(original_html).inner_text
     end
     ActiveRecord::Base.transaction do
-      Settings.rss.livedoor.full.each do |category_info|
+      Settings.rss.livedoor.each do |category_info|
         category = category_info[0]
         category_id = Article.categories[category]
         url = category_info[1][:url]
         feed = Feedjira::Feed.fetch_and_parse url
-        if category_info[1][:has_summary]
-          feed.entries.each do |entry|
-            next if Article.find_by(category: category_id, url: only_text(entry.url)).present?
-            article = {
-              category: category_id,
-              title: only_text(entry.title),
-              url: only_text(entry.url),
-              summary: only_text(entry.summary),
-              content: only_text(entry.content)
-            }
-            Article.create!(article)
-          end
-        else
-          original_url = Settings.rss.livedoor.try(category)[:url]
-          original_feed = Feedjira::Feed.fetch_and_parse original_url
-          articles = []
-          original_feed.entries.each do |entry|
-            next if Article.find_by(category: category_id, url: only_text(entry.url)).present?
-            article = {
-              category: category,
-              title: only_text(entry.title),
-              url: only_text(entry.url),
-              summary: only_text(entry.summary),
-              content: nil
-            }
-            articles << article;
-          end
-          feed.entries.each do |entry|
-            next if Article.find_by(category: category_id, url: only_text(entry.url)).present?
-            articles.each_with_index do |article, i|
-              if article[:url] == entry.url
-                # contentがsummaryの代わりに入ってる
-                article[:content] = only_text(entry.summary)
-                Article.create!(article)
-                # OPTIMIZE bulk insertなどで高速化できる
-              end
-            end
-          end
+        feed.entries.each do |entry|
+          next if Article.find_by(category: category_id, url: only_text(entry.url)).present?
+          article = {
+            category: category_id,
+            title: only_text(entry.title),
+            url: only_text(entry.url),
+            summary: only_text(entry.summary),
+            content: FullContent.article_body(entry.url)
+          }
+          Article.create!(article)
         end
       end
     end

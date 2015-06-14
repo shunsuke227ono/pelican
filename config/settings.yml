@@ -10,17 +10,6 @@ rss:
     gourmet: { name: "グルメ", url: "http://news.livedoor.com/topics/rss/gourmet.xml" }
     love: { name: "女子", url: "http://news.livedoor.com/topics/rss/love.xml" }
     trend: { name: "トレンド", url: "http://news.livedoor.com/topics/rss/trend.xml" }
-    full:
-      top: { url: "http://fullrss.net/a/http/news.livedoor.com/topics/rss/top.xml", has_summary: true }
-      dom: { url: "http://fullrss.net/a/http/news.livedoor.com/topics/rss/dom.xml", has_summary: true }
-#      int:
-#      eco:
-#      ent:
-      spo: { url: "http://www.wmutils.com/fulltextrss/feeds/f2b47365d059b3fe28b773a5bb45ba94.xml", has_summary: false }
-#      mov:
-#      gourmet:
-#      love:
-#      trend:
   similar_articles:
     allabout:
       full:
