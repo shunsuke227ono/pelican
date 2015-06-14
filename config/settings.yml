@@ -10,3 +10,14 @@ rss:
     gourmet: { name: "グルメ", url: "http://news.livedoor.com/topics/rss/gourmet.xml" }
     love: { name: "女子", url: "http://news.livedoor.com/topics/rss/love.xml" }
     trend: { name: "トレンド", url: "http://news.livedoor.com/topics/rss/trend.xml" }
+    full:
+      top: "http://fullrss.net/a/http/news.livedoor.com/topics/rss/top.xml"
+      dom: "http://fullrss.net/a/http/news.livedoor.com/topics/rss/dom.xml"
+      int:
+      eco:
+      ent:
+      spo:
+      mov:
+      gourmet:
+      love:
+      trend:

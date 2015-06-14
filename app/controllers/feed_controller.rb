@@ -5,6 +5,6 @@ class FeedController < ApplicationController
   end
   private
   def set_url
-    @url = Settings.rss.livedoor.try(params[:category])[:url]
+    @url = Settings.rss.livedoor.full.try(params[:category])
   end
 end
