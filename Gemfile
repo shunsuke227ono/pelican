@@ -60,3 +60,5 @@ gem 'matrix'
 gem 'tf-idf-similarity'
 
 gem 'tf_idf'
+
+gem 'nokogiri'
