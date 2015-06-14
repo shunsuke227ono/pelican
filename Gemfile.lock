@@ -85,6 +85,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    matrix (0.0.1)
     mecab (0.996)
     method_source (0.8.2)
     mime-types (2.6.1)
@@ -155,6 +156,8 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    tf-idf-similarity (0.1.4)
+    tf_idf (0.0.2)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -184,6 +187,7 @@ DEPENDENCIES
   feedjira
   jbuilder (~> 2.0)
   jquery-rails
+  matrix
   mecab
   mysql2
   natto
@@ -193,6 +197,8 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
+  tf-idf-similarity
+  tf_idf
   therubyracer
   turbolinks
   uglifier (>= 1.3.0)
