@@ -7,14 +7,15 @@ namespace :rss do
         url = category_and_url[1]
         feed = Feedjira::Feed.fetch_and_parse url
         feed.entries.each do |entry|
+          category_id = Article.categories[category]
+          next if Article.find_by(category: category_id, url: entry.url).present?
           article = {
-            category: category,
+            category: category_id,
             title: entry.title,
             url: entry.url,
             summary: entry.summary,
             content: entry.content
           }
-          p article[:category]
           Article.create!(article)
         end
       end
