@@ -52,3 +52,6 @@ gem 'feedjira'
 
 # use pry instead of irb in console
 gem 'pry-rails'
+
+gem 'mecab'
+gem 'natto'
