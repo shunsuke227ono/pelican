@@ -49,3 +49,6 @@ gem 'rails_config'
 
 # For parsing rss
 gem 'feedjira'
+
+# use pry instead of irb in console
+gem 'pry-rails'
