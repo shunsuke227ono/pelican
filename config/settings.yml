@@ -21,3 +21,13 @@ rss:
 #      gourmet:
 #      love:
 #      trend:
+  similar_articles:
+    allabout:
+      full:
+        sport: { url: "http://fullrss.net/a/http/headlines.yahoo.co.jp/rss/nallabout-c_spo.xml", has_summary: false }
+    spnavi:
+      full:
+        sport: { url: "http://fullrss.net/a/http/headlines.yahoo.co.jp/rss/spnavi-c_spo.xml", has_summary: false }
+    sankei_spo:
+      full: 
+        sport: { url: "http://fullrss.net/a/http/headlines.yahoo.co.jp/rss/san-c_spo.xml", has_summary: false }

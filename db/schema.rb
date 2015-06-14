@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614032601) do
+ActiveRecord::Schema.define(version: 20150614052632) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "category",   limit: 4
@@ -24,5 +24,17 @@ ActiveRecord::Schema.define(version: 20150614032601) do
   end
 
   add_index "articles", ["category", "url"], name: "index_articles_on_category_and_url", unique: true, using: :btree
+
+  create_table "similar_articles", force: :cascade do |t|
+    t.integer  "category",   limit: 4
+    t.string   "title",      limit: 255
+    t.text     "summary",    limit: 65535
+    t.text     "content",    limit: 65535
+    t.string   "url",        limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "similar_articles", ["category", "url"], name: "index_similar_articles_on_category_and_url", unique: true, using: :btree
 
 end
