@@ -1,6 +1,9 @@
 namespace :rss do
   desc "get rss basic information and store it to db"
   task :get_livedoor => :environment do
+    def only_text(original_html)
+      Nokogiri::HTML(original_html).inner_text
+    end
     ActiveRecord::Base.transaction do
       Settings.rss.livedoor.full.each do |category_info|
         category = category_info[0]
@@ -9,13 +12,13 @@ namespace :rss do
         feed = Feedjira::Feed.fetch_and_parse url
         if category_info[1][:has_summary]
           feed.entries.each do |entry|
-            next if Article.find_by(category: category_id, url: entry.url).present?
+            next if Article.find_by(category: category_id, url: only_text(entry.url)).present?
             article = {
               category: category_id,
-              title: entry.title,
-              url: entry.url,
-              summary: entry.summary,
-              content: entry.content
+              title: only_text(entry.title),
+              url: only_text(entry.url),
+              summary: only_text(entry.summary),
+              content: only_text(entry.content)
             }
             Article.create!(article)
           end
@@ -24,22 +27,22 @@ namespace :rss do
           original_feed = Feedjira::Feed.fetch_and_parse original_url
           articles = []
           original_feed.entries.each do |entry|
-            next if Article.find_by(category: category_id, url: entry.url).present?
+            next if Article.find_by(category: category_id, url: only_text(entry.url)).present?
             article = {
               category: category,
-              title: entry.title,
-              url: entry.url,
-              summary: entry.summary,
+              title: only_text(entry.title),
+              url: only_text(entry.url),
+              summary: only_text(entry.summary),
               content: nil
             }
             articles << article;
           end
           feed.entries.each do |entry|
-            next if Article.find_by(category: category_id, url: entry.url).present?
+            next if Article.find_by(category: category_id, url: only_text(entry.url)).present?
             articles.each_with_index do |article, i|
               if article[:url] == entry.url
                 # contentがsummaryの代わりに入ってる
-                article[:content] = entry.summary
+                article[:content] = only_text(entry.summary)
                 Article.create!(article)
                 # OPTIMIZE bulk insertなどで高速化できる
               end
