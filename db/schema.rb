@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614030806) do
+ActiveRecord::Schema.define(version: 20150614032601) do
 
   create_table "articles", force: :cascade do |t|
-    t.integer  "category",    limit: 4
-    t.string   "title",       limit: 255
-    t.string   "description", limit: 255
-    t.string   "content",     limit: 255
-    t.string   "link",        limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "category",   limit: 4
+    t.string   "title",      limit: 255
+    t.text     "summary",    limit: 65535
+    t.text     "content",    limit: 65535
+    t.string   "url",        limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
-  add_index "articles", ["category", "link"], name: "index_articles_on_category_and_link", unique: true, using: :btree
+  add_index "articles", ["category", "url"], name: "index_articles_on_category_and_url", unique: true, using: :btree
 
 end
