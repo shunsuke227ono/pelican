@@ -191,6 +191,7 @@ DEPENDENCIES
   mecab
   mysql2
   natto
+  nokogiri
   pry-rails
   rails (= 4.2.0)
   rails_config
