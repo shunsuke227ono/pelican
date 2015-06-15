@@ -5,6 +5,7 @@ namespace :rss do
   end
   task :get_livedoor => :environment do
     ActiveRecord::Base.transaction do
+      p "=========start get_livedoor=========="
       Settings.rss.livedoor.each do |category_info|
         category = category_info[0]
         category_id = Article.categories[category]
@@ -26,6 +27,7 @@ namespace :rss do
   end
   task :get_yahoo => :environment do
     ActiveRecord::Base.transaction do
+      p "=========start get_yahoo=========="
       category = :spo
       Settings.rss.yahoo.spo.each do |rss_url|
         category_id = SimilarArticle.categories[category]

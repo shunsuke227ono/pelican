@@ -3,6 +3,7 @@ namespace :similarity do
   task :get_similar_articles => :environment do
     Article.categories.each do |category|
       ActiveRecord::Base.transaction do
+        p "=========start sim=========="
         # それぞれの記事を形態素のarrayに
         next unless category[0] == "spo"
         category_id = category[1]
