@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614052632) do
+ActiveRecord::Schema.define(version: 20150615075637) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "category",   limit: 4
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20150614052632) do
   end
 
   add_index "articles", ["category", "url"], name: "index_articles_on_category_and_url", unique: true, using: :btree
+
+  create_table "recommended_articles", force: :cascade do |t|
+    t.integer  "article_id",         limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "similar_article_id", limit: 4
+  end
+
+  add_index "recommended_articles", ["article_id"], name: "index_recommended_articles_on_article_id", using: :btree
 
   create_table "similar_articles", force: :cascade do |t|
     t.integer  "category",   limit: 4
