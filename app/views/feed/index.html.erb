@@ -2,16 +2,19 @@
   <%= link_to category[1][:name], feed_index_path(category: category[0]) %>
 <% end %>
 <div class="container-fluid">
-  <%= @feed.title %>
+  <%#= @feed.title %>
   <% @feed.entries.each_slice(3) do |entries| %>
     <div class="row">
       <% entries.each do |entry| %>
         <div class="col-sm-4">
           <div class="panel panel-default">
             <div>
-              <p><%= link_to entry.title, entry.url %></p>
+              <p><%= link_to entry.title, entry.url, target: 'blank' %></p>
               <%= raw(entry.summary) %>
-              <p><%= raw(entry.content) %></p>
+              <p><%#= raw(entry.content) %></p>
+              <% entry.similar_articles.each do |similar_article| %>
+                <p><%= link_to similar_article.title, similar_article.url, target: 'blank' %><p>
+              <% end %>
             </div>
           </div>
         </div>

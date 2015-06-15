@@ -26,9 +26,9 @@ namespace :similarity do
           three_closest_article_indexes = tfidf.three_closest_cos_distance_indexes_from(index)
           three_closest_article_indexes.each_with_index do |closest_index, i|
             if i < recommended_articles.size
-              recommended_articles[i].update!(similar_article_id: closest_index)
+              recommended_articles[i].update!(similar_article_id: articles[closest_index][:id])
             else
-              RecommendedArticle.create!(article_id: article[:id], similar_article_id: closest_index)
+              RecommendedArticle.create!(article_id: article[:id], similar_article_id: articles[closest_index][:id])
             end
           end
         end

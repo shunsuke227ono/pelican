@@ -61,3 +61,8 @@ gem 'matrix'
 gem 'tf_idf'
 
 gem 'nokogiri'
+
+gem 'kaminari'
+
+# Utility
+gem 'action_args'
