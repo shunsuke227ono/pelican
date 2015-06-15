@@ -1,4 +1,6 @@
 class Article < ActiveRecord::Base
+  has_many :recommended_articles
+  has_many :similar_articles, through: :recommended_articles
   enum category: {
     top: 1,
     dom: 2,
