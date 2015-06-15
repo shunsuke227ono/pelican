@@ -6,32 +6,27 @@ namespace :similarity do
         # それぞれの記事を形態素のarrayに
         next unless category[0] == "spo"
         category_id = category[1]
-        article_ids = []
+        articles = []
         all_articles_morpheme = []
-        nm = Natto::MeCab.new('-F%m,\s%f[0]')
-        Article.where(category: category_id).each do |article|
-          article_ids << { class_name: "Article", id: article.id}
-          all_articles_morpheme << nm.enum_parse(article.content).map{ |x| x.surface if x.feature[-2..-1]=="名詞"||x.feature[-2..-1]=="動詞" }.compact
+        nm = NattoMecab.new
+        livedoor_articles = Article.where(category: category_id)
+        livedoor_articles.each do |article|
+          articles << { class_name: "Article", id: article.id}
+          all_articles_morpheme << nm.nouns(article.content)
         end
         SimilarArticle.where(category: category_id).each do |article|
-          article_ids << { class_name: "SimilarArticle", id: article.id }
-          all_articles_morpheme << nm.enum_parse(article.content).map{ |x| x.surface if x.feature[-2..-1]=="名詞"||x.feature[-2..-1]=="動詞" }.compact
+          articles << { class_name: "SimilarArticle", id: article.id }
+          all_articles_morpheme << nm.nouns(article.content)
         end
-
-        tfidf = TfIdf.new(all_articles_morpheme)
-        tfidf_hashes = tfidf.tf_idf # array of hash
-
-        # それぞれのベクトルにとって類似度トップ探す。
-        # O(n^2)
-        tfidf_vectors = tfidf_hashes.map{ |tfidf_hash| tfidf_hash.values }# 特徴ベクトルのarray
-        distance_matrix = [];
-        tfidf_vectors.each do |origin_vector|
-          p origin_vector.size
-          #distance_matrix_row = []
-          #tfidf_vectors.each do |goal_vector|
-          #  distance_matrix_row << VectorCalculation.cos_of(origin_vector, goal_vector)
-          #end
-          #distance_matrix << distance_matrix_row
+        
+        similar_article_base_index = livedoor_articles.size
+        tfidf = TfIdfCalculation.new(all_articles_morpheme, similar_article_base_index)
+        articles[0...similar_article_base_index].each_with_index do |article, index|
+          three_closest_article_indexes = tfidf.three_closest_cos_distance_indexes_from(index)
+          three_closest_article_indexes.each do |index|
+            p articles[index]
+          end
+          # FIXME 全記事内から類似三つだが、livedoor内からは持ってこないで
         end
       end
     end
