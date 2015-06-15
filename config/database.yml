@@ -23,11 +23,11 @@ test:
   <<: *default
   database: pelican_test
 
-production:
-  <<: *default
-  database: pelican_production
-  host: "test"
-  port: 3306
-
-heroku:
-  url: <%= ENV['DATABASE_URL'] %>
+#production:
+#  <<: *default
+#  database: pelican_production
+#  host: "test"
+#  port: 3306
+#
+#heroku:
+#  url: <%= ENV['DATABASE_URL'] %>
