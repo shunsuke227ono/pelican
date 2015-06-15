@@ -9,12 +9,13 @@ namespace :similarity do
         articles = []
         all_articles_morpheme = []
         nm = NattoMecab.new
-        livedoor_articles = Article.where(category: category_id)
+        livedoor_articles = Article.where(category: category_id, has_recommendation: false)
         livedoor_articles.each do |article|
           articles << { class_name: "Article", id: article.id}
           all_articles_morpheme << nm.nouns(article.content)
         end
-        SimilarArticle.where(category: category_id).each do |article|
+        # 現状 7x20=140の最新記事取得している。最新からのみ類似選ぶ。
+        SimilarArticle.where(category: category_id).last(140).each do |article|
           articles << { class_name: "SimilarArticle", id: article.id }
           all_articles_morpheme << nm.nouns(article.content)
         end
@@ -31,6 +32,7 @@ namespace :similarity do
               RecommendedArticle.create!(article_id: article[:id], similar_article_id: articles[closest_index][:id])
             end
           end
+          livedoor_articles[index].update!(has_recommendation: true)
         end
       end
     end

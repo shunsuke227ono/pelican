@@ -13,4 +13,6 @@ class Article < ActiveRecord::Base
     love: 9,
     trend: 10
   }
+
+  scope :without_recommendation, -> { where(has_recommendation: false) }
 end
