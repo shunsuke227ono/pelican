@@ -66,3 +66,6 @@ gem 'kaminari'
 
 # Utility
 gem 'action_args'
+
+# 定期的にバッチ処理回すために
+gem 'whenever'
