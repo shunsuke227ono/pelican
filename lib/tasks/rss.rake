@@ -17,31 +17,28 @@ namespace :rss do
             title: only_text(entry.title),
             url: only_text(entry.url),
             summary: only_text(entry.summary),
-            content: FullContent.article_body(entry.url)
+            content: FullContent.article_body(entry.url, :livedoor)
           }
           Article.create!(article)
         end
       end
     end
   end
-  task :get_similar_articles => :environment do
+  task :get_yahoo => :environment do
     ActiveRecord::Base.transaction do
-      Settings.rss.similar_articles.each do |similar_article|
-        # FIXME 他カテゴリも対応可能にする
-        category = :spo
-        url = similar_article[1].full.try(category)[:url]
+      category = :spo
+      Settings.rss.yahoo.spo.each do |rss_url|
         category_id = SimilarArticle.categories[category]
-        feed = Feedjira::Feed.fetch_and_parse url
+        feed = Feedjira::Feed.fetch_and_parse rss_url
         feed.entries.each do |entry|
+          next if SimilarArticle.find_by(category: category_id, url: entry.url).present?
           SimilarArticle.create!(
             category: category_id,
             title: only_text(entry.title),
             url: only_text(entry.url),
             summary: only_text(entry.summary),
-            content: only_text(entry.content)
+            content: FullContent.article_body(entry.url, :yahoo)
           )
-          # 類似度分析はcontentで行うので、
-          # summaryは機能拡大する時にあれば便利かも的な
         end
       end
     end
