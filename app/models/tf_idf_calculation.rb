@@ -52,12 +52,12 @@ class TfIdfCalculation
         @cos_distance_matrix[goal_index][index] = cos_distance
       end
     end
-    p @cos_distance_matrix
+    @cos_distance_matrix
   end
   def three_closest_cos_distance_indexes_from(origin_index)
     # @data[origin_index]から最も近い三つの@data[??]のindexを返す
     distance_row = cos_distance_matrix[origin_index]
-    p distance_row.map.with_index.sort.map(&:last)[-3..-1].reverse
+    distance_row.map.with_index.sort.map(&:last)[-3..-1].reverse
   end
 
   private

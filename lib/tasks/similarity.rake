@@ -1,6 +1,6 @@
 namespace :similarity do
   desc "calculate similarity of articles and store it to livedoor article db"
-  task :calculate => :environment do
+  task :get_similar_articles => :environment do
     Article.categories.each do |category|
       ActiveRecord::Base.transaction do
         # それぞれの記事を形態素のarrayに
@@ -22,11 +22,15 @@ namespace :similarity do
         similar_article_base_index = livedoor_articles.size
         tfidf = TfIdfCalculation.new(all_articles_morpheme, similar_article_base_index)
         articles[0...similar_article_base_index].each_with_index do |article, index|
+          recommended_articles = RecommendedArticle.where(article_id: article[:id])
           three_closest_article_indexes = tfidf.three_closest_cos_distance_indexes_from(index)
-          three_closest_article_indexes.each do |index|
-            p articles[index]
+          three_closest_article_indexes.each_with_index do |closest_index, i|
+            if i < recommended_articles.size
+              recommended_articles[i].update!(similar_article_id: closest_index)
+            else
+              RecommendedArticle.create!(article_id: article[:id], similar_article_id: closest_index)
+            end
           end
-          # FIXME 全記事内から類似三つだが、livedoor内からは持ってこないで
         end
       end
     end
