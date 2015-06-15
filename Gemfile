@@ -72,3 +72,4 @@ gem 'whenever'
 
 # herokuのため
 gem 'rails_12factor', group: :production
+gem 'puma'
