@@ -10,13 +10,11 @@ rss:
     gourmet: { name: "グルメ", url: "http://news.livedoor.com/topics/rss/gourmet.xml" }
     love: { name: "女子", url: "http://news.livedoor.com/topics/rss/love.xml" }
     trend: { name: "トレンド", url: "http://news.livedoor.com/topics/rss/trend.xml" }
-  similar_articles:
-    allabout:
-      full:
-        spo: { url: "http://fullrss.net/a/http/headlines.yahoo.co.jp/rss/nallabout-c_spo.xml", has_summary: false }
-    spnavi:
-      full:
-        spo: { url: "http://fullrss.net/a/http/headlines.yahoo.co.jp/rss/spnavi-c_spo.xml", has_summary: false }
-    sankei_spo:
-      full: 
-        spo: { url: "http://fullrss.net/a/http/headlines.yahoo.co.jp/rss/san-c_spo.xml", has_summary: false }
+  yahoo:
+    spo: [  "http://headlines.yahoo.co.jp/rss/wordleaf-c_spo.xml",
+            "http://headlines.yahoo.co.jp/rss/ballball-c_spo.xml",
+            "http://headlines.yahoo.co.jp/rss/spnannex-c_spo.xml",
+            "http://headlines.yahoo.co.jp/rss/nkgendai-c_spo.xml",
+            "http://headlines.yahoo.co.jp/rss/scn-c_spo.xml",
+            "http://headlines.yahoo.co.jp/rss/san-c_spo.xml",
+            "http://headlines.yahoo.co.jp/rss/ykf-c_spo.xml"       ]
