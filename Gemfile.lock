@@ -91,6 +91,7 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     matrix (0.0.1)
+    mecab (0.996)
     method_source (0.8.2)
     mime-types (2.6.1)
     mini_portile (0.6.2)
@@ -200,6 +201,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   matrix
+  mecab (= 0.996)
   mysql2
   natto
   nokogiri

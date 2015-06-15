@@ -25,4 +25,6 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: pelican_production
+  host: "test"
+  port: 3306
