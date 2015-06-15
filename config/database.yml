@@ -25,7 +25,9 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
   database: pelican_production
   host: "test"
   port: 3306
+
+heroku:
+  url: <%= ENV['DATABASE_URL'] %>
