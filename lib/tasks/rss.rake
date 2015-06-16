@@ -28,6 +28,7 @@ namespace :rss do
               url: entry_url,
               summary: entry_summary[0..-11],
               content: img_and_article_body[:article_body],
+              content_html: img_and_article_body[:article_body_html],
               img: img_and_article_body[:img]
             }
             Article.create!(article_attr)
