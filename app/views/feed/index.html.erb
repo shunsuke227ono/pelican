@@ -22,7 +22,7 @@
                             <strong><%= entry.title %></strong>
                           </div>
                           <div class="entry-desc__summary">
-                            <p class="text-muted"><%= entry.summary.truncate(80) %></p>
+                            <p class="text-muted"><%= entry.decorate.short_heading %></p>
                           </div>
                         </div>
                       </div>
@@ -35,7 +35,7 @@
                             <strong><%= entry.title %></strong>
                           </div>
                           <div class="entry-desc__summary--without-img">
-                            <p class="text-muted"><%= entry.summary.truncate(160) %></p>
+                            <p class="text-muted"><%= entry.decorate.long_heading %></p>
                           </div>
                         </div>
                       </div>
