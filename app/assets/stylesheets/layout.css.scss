@@ -23,6 +23,7 @@ body {
     width: 100%;
   }
 }
+
 .sidebar-list {
   margin-top: 80px;
   padding: 0;
@@ -45,6 +46,7 @@ body {
     color: $solitude;
   }
 }
+
 .main-wrapper {
   @include calc-width-100(198px);
   float: right;
@@ -53,10 +55,11 @@ body {
 .content-wrapper {
   padding: 100px 80px;
 }
+
 .topbar {
   background-color: $solitude;
   @include calc-width-100(198px);
-  font-size: $font_medium;
+  font-size: $font_large;
   text-align: center;
   padding: 5px 0;
   position: fixed;
