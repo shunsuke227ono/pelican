@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615114640) do
+ActiveRecord::Schema.define(version: 20150616074722) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "category",           limit: 4
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150615114640) do
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
     t.boolean  "has_recommendation", limit: 1,     default: false
+    t.string   "img",                limit: 255
   end
 
   add_index "articles", ["category", "url"], name: "index_articles_on_category_and_url", unique: true, using: :btree
