@@ -21,12 +21,14 @@ namespace :rss do
           if article.present?
             article.update!(summary: entry_summary) if update_summary?(article, entry_summary)
           else
+            img_and_article_body = FullContent.img_and_article_body(entry.url)
             article_attr = {
               category: category_id,
               title: only_text(entry.title),
               url: entry_url,
               summary: entry_summary,
-              content: FullContent.article_body(entry.url, :livedoor)
+              content: img_and_article_body[:article_body],
+              img: img_and_article_body[:img]
             }
             Article.create!(article_attr)
           end

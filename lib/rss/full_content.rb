@@ -13,7 +13,7 @@ module FullContent
     res = {}
     page = Nokogiri::HTML(open(link))
     res[:article_body] = page.at("[@itemprop='articleBody']").inner_text
-    res[:img] = page.at("[@itemprop='image']").attr('src')
+    res[:img] = page.at("[@itemprop='image']").attr('src') if page.at("[@itemprop='image']").present?
     res
   end
 end

@@ -8,6 +8,7 @@
       <% entries.each do |entry| %>
         <div class="col-sm-4">
           <div class="panel panel-default">
+            <%= image_tag entry.img %>
             <div>
               <p><%= link_to entry.title, entry.url, target: 'blank' %></p>
               <%= raw(entry.summary) %>
@@ -22,5 +23,3 @@
     </div>
   <% end %>
 </div>
-
-
