@@ -26,7 +26,7 @@ namespace :rss do
               category: category_id,
               title: only_text(entry.title),
               url: entry_url,
-              summary: entry_summary,
+              summary: entry_summary[0..-11],
               content: img_and_article_body[:article_body],
               img: img_and_article_body[:img]
             }
