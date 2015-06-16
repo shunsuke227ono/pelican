@@ -3,6 +3,9 @@ namespace :rss do
   def only_text(original_html)
     Nokogiri::HTML(original_html).inner_text
   end
+  def update_summary?(article, entry_summary)
+    article.summary != entry_summary
+  end
   task :get_livedoor => :environment do
     ActiveRecord::Base.transaction do
       p "=========start get_livedoor=========="
@@ -12,15 +15,21 @@ namespace :rss do
         url = category_info[1][:url]
         feed = Feedjira::Feed.fetch_and_parse url
         feed.entries.each do |entry|
-          next if Article.find_by(category: category_id, url: only_text(entry.url)).present?
-          article = {
-            category: category_id,
-            title: only_text(entry.title),
-            url: only_text(entry.url),
-            summary: only_text(entry.summary),
-            content: FullContent.article_body(entry.url, :livedoor)
-          }
-          Article.create!(article)
+          entry_url = only_text(entry.url)
+          entry_summary = only_text(entry.summary)
+          article = Article.find_by(category: category_id, url: entry_url)
+          if article.present?
+            article.update!(summary: entry_summary) if update_summary?(article, entry_summary)
+          else
+            article_attr = {
+              category: category_id,
+              title: only_text(entry.title),
+              url: entry_url,
+              summary: entry_summary,
+              content: FullContent.article_body(entry.url, :livedoor)
+            }
+            Article.create!(article_attr)
+          end
         end
       end
     end

@@ -4,9 +4,12 @@ class FeedController < ApplicationController
       url = Settings.rss.livedoor.full.try(params[:category])
       @feed = Feedjira::Feed.fetch_and_parse @url
     else
-      category
       category_id = Article.categories[category.to_sym]
-      @feed = Article.where(category: category_id).page(page).per(12)
+      if category == "spo"
+        @feed = Article.where(category: category_id, has_recommendation: true).order('created_at DESC').page(page).per(12)
+      else
+        @feed = Article.where(category: category_id).order('created_at DESC').page(page).per(12)
+      end
     end
   end
 end
