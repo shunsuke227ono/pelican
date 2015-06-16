@@ -58,9 +58,21 @@
                           <div class="modal-entry__content">
                             <%= entry.content %>
                           </div>
-                          <div class="modal-entry__link">
-                            <%= link_to "元の記事を読む", entry.url, target: :blank %>
-                          </div>
+                          <% if entry.similar_articles.present? %>
+                            <div class="modal-entry__similar-articles">
+                              <div class="modal-entry__similar-articles__title">
+                                <p><strong>あなたにオススメの記事一覧</strong></p>
+                              </div>
+                              <div class="modal-entry__similar-articles__links">
+                                <% entry.similar_articles.each do |similar_article| %>
+                                  <p><%= link_to similar_article.title, similar_article.url, target: :blank %></p>
+                                <% end %>
+                              </div>
+                            </div>
+                            <div class="modal-entry__link">
+                              <%= link_to "元の記事を読む", entry.url, target: :blank %>
+                            </div>
+                          <% end %>
                         </div>
                       </div>
                     </div>
