@@ -50,13 +50,8 @@
                           <div class="modal-entry__title">
                             <strong><%= entry.title %></strong>
                           </div>
-                          <% if entry.img.present? %>
-                            <div class="modal-entry__img">
-                              <%= image_tag entry.img%>
-                            </div>
-                          <% end %>
                           <div class="modal-entry__content">
-                            <%= entry.content %>
+                            <%= raw(entry.content_html) %>
                           </div>
                           <% if entry.similar_articles.present? %>
                             <div class="modal-entry__similar-articles">

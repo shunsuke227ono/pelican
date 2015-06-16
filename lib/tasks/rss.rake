@@ -21,7 +21,7 @@ namespace :rss do
           if article.present?
             article.update!(summary: entry_summary) if update_summary?(article, entry_summary)
           else
-            img_and_article_body = FullContent.img_and_article_body(entry.url)
+            img_and_article_body = FullContent.img_and_article_body_and_html(entry.url)
             article_attr = {
               category: category_id,
               title: only_text(entry.title),
