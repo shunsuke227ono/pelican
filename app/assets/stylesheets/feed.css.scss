@@ -59,6 +59,17 @@ $entryHeight: 240px;
 }
 
 // modalでの全文記事
+.modal-entry-container {
+}
+.modal-dialog-entry-container {
+  width: 680px;
+}
+.modal-header-entry {
+  border-bottom: 0;
+}
+.modal-body-entry {
+  padding: 15px 30px;
+}
 .modal-entry__title {
   font-size: $font_large;
   text-align: center;
@@ -68,21 +79,23 @@ $entryHeight: 240px;
   padding: 30px 20px;
 }
 .modal-entry__content {
-  padding: 30px 0 10px;
+  padding: 30px 0 0;
 }
 .modal-entry__link {
   text-align: right;
 }
 .modal-entry__similar-articles__links {
-  p {
-    line-height: 90%;
-  }
 }
-
+.modal-entry__similar-articles {
+  margin-top: 10px;
+}
 // scrapeしたhtml
 .articleImage {
   float: right;
   margin: 0 0 10px 30px;
+}
+.articleImageExpand {
+  text-align: center;
 }
 
 .pagination-wrapper {
