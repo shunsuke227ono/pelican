@@ -1,0 +1,14 @@
+<div class="sidebar-wrapper">
+  <div class="sidebar-logo">
+    <%= image_tag('share/pelican_64.png') %>
+  </div>
+  <ul class="sidebar-list">
+    <% Settings.rss.livedoor.each do |category| %>
+      <%= link_to(feed_index_path(category: category[0]), class: "sidebar-list__link") do %>
+        <li class="sidebar-list__link__item <%= 'active' if params[:category]==category[0].to_s %>">
+          <%= category[1][:name] %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

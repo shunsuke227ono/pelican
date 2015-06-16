@@ -1,0 +1,66 @@
+@import "share/setting";
+$entryHeight: 240px;
+.entry-container {
+  background-color: $lighter_white;
+  display: table;
+  height: $entryHeight;
+  max-height: $entryHeight;
+}
+.entry-desc-wrapper-table {
+  display: table;
+  height: $entryHeight;
+  max-height: $entryHeight;
+}
+.entry-desc-wrapper-cell {
+  display: table-cell;
+  padding-right: 10px;
+  vertical-align: middle;
+}
+.entry-desc__title {
+  font-size: $font_medium;
+}
+.entry-desc__title--without-img {
+  font-size: $font_large;
+  padding: 0 20px 0 40px;
+}
+.entry-desc__summary {
+  margin-top: 10px;
+}
+.entry-desc__summary--without-img {
+  margin-top: 10px;
+  padding: 0 20px 0 40px;
+}
+
+.img-wrapper-table {
+  display: table;
+  width: 100%;
+  height: $entryHeight;
+  max-height: $entryHeight;
+}
+.img-wrapper-cell {
+  display: table-cell;
+  width: 100%;
+  vertical-align: middle;
+  height: 100%;
+  img {
+    display: block;
+    height: $entryHeight;
+    width: 100%;
+  }
+}
+
+// modalでの全文記事
+.modal-entry__title {
+  font-size: $font_large;
+  text-align: center;
+}
+.modal-entry__img {
+  float: left;
+  padding: 30px 20px;
+}
+.modal-entry__content {
+  padding: 30px 0 10px;
+}
+.modal-entry__link {
+  text-align: right;
+}

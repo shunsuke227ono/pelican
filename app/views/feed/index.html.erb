@@ -1,21 +1,72 @@
-<% Settings.rss.livedoor.each do |category| %>
-  <%= link_to category[1][:name], feed_index_path(category: category[0]) %>
-<% end %>
 <div class="container-fluid">
-  <%#= @feed.title %>
-  <% @feed.entries.each_slice(3) do |entries| %>
+  <% @feed.entries.each_slice(2) do |entries| %>
     <div class="row">
       <% entries.each do |entry| %>
-        <div class="col-sm-4">
+        <div class="col-lg-6">
           <div class="panel panel-default">
-            <%= image_tag entry.img %>
-            <div>
-              <p><%= link_to entry.title, entry.url, target: 'blank' %></p>
-              <%= raw(entry.summary) %>
-              <p><%#= raw(entry.content) %></p>
-              <% entry.similar_articles.each do |similar_article| %>
-                <p><%= link_to similar_article.title, similar_article.url, target: 'blank' %><p>
-              <% end %>
+            <div class="entry-container">
+              <div class="row">
+                <a href="#" data-toggle="modal" data-target="<%= "#entry_full_content" + entry.id.to_s %>">
+                  <% if entry.img.present? %>
+                    <div class="col-xs-6">
+                      <div class="img-wrapper-table">
+                        <div class="img-wrapper-cell">
+                          <%= image_tag entry.img %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-6">
+                      <div class="entry-desc-wrapper-table">
+                        <div class="entry-desc-wrapper-cell">
+                          <div class="entry-desc__title">
+                            <strong><%= entry.title %></strong>
+                          </div>
+                          <div class="entry-desc__summary">
+                            <p class="text-muted"><%= entry.summary.truncate(80) %></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% else %>
+                    <div class="col-md-12">
+                      <div class="entry-desc-wrapper-table">
+                        <div class="entry-desc-wrapper-cell">
+                          <div class="entry-desc__title--without-img">
+                            <strong><%= entry.title %></strong>
+                          </div>
+                          <div class="entry-desc__summary--without-img">
+                            <p class="text-muted"><%= entry.summary.truncate(160) %></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                </a>
+                <div class="modal fade" id="<%= "entry_full_content" + entry.id.to_s %>">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <div class="modal-entry">
+                          <div class="modal-entry__title">
+                            <strong><%= entry.title %></strong>
+                          </div>
+                          <% if entry.img.present? %>
+                            <div class="modal-entry__img">
+                              <%= image_tag entry.img%>
+                            </div>
+                          <% end %>
+                          <div class="modal-entry__content">
+                            <%= entry.content %>
+                          </div>
+                          <div class="modal-entry__link">
+                            <%= link_to "元の記事を読む", entry.url, target: :blank %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
