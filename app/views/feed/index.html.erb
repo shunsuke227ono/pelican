@@ -8,10 +8,10 @@
               <div class="row">
                 <a href="#" data-toggle="modal" data-target="<%= "#entry_full_content" + entry.id.to_s %>">
                   <% if entry.img.present? %>
-                    <div class="col-xs-6">
+                    <div class="col-xs-6" style="background-image: image-url(<%= entry.img %>)">
                       <div class="img-wrapper-table">
                         <div class="img-wrapper-cell">
-                          <%= image_tag entry.img %>
+                          <%#= image_tag entry.img %>
                         </div>
                       </div>
                     </div>
