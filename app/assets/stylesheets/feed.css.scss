@@ -50,6 +50,14 @@ $entryHeight: 240px;
 }
 
 // modalでの全文記事
+.modal-entry-container {
+}
+.modal-dialog-entry-container {
+  width: 680px;
+}
+.modal-header-entry {
+  border-bottom: 0;
+}
 .modal-entry__title {
   font-size: $font_large;
   text-align: center;
@@ -69,11 +77,13 @@ $entryHeight: 240px;
     line-height: 90%;
   }
 }
-
 // scrapeしたhtml
 .articleImage {
   float: right;
   margin: 0 0 10px 30px;
+}
+.articleImageExpand {
+  text-align: center;
 }
 
 .pagination-wrapper {
