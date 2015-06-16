@@ -71,5 +71,5 @@ gem 'action_args'
 gem 'whenever'
 
 # herokuのため
-gem 'rails_12factor', group: :production
 gem 'puma'
+gem 'rails_12factor'
