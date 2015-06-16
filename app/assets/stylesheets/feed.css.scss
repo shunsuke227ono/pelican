@@ -30,7 +30,16 @@ $entryHeight: 240px;
   margin-top: 10px;
   padding: 0 20px 0 40px;
 }
-
+.entry-img-wrapper {
+  position: relative;
+}
+.entry-img {
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 240px;
+  min-width: 100%;
+}
 .img-wrapper-table {
   display: table;
   width: 100%;
