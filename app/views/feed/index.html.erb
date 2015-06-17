@@ -52,8 +52,14 @@
                           <div class="modal-entry__title">
                             <strong><%= entry.title %></strong>
                           </div>
+                          <% if entry.img.present? %>
+                            <div class="modal-entry__img">
+                              <%= image_tag entry.img %>
+                            </div>
+                          <% end %>
                           <div class="modal-entry__content">
-                            <%= raw(entry.content_html) %>
+                            <%#= raw(entry.content_html) %>
+                            <%= entry.content %>
                           </div>
                           <div class="modal-entry__link">
                             <%= link_to "元の記事を読む", entry.url, target: :blank %>

@@ -13,38 +13,41 @@
 
 ActiveRecord::Schema.define(version: 20150616151216) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "articles", force: :cascade do |t|
-    t.integer  "category",           limit: 4
-    t.string   "title",              limit: 255
-    t.text     "summary",            limit: 65535
-    t.text     "content",            limit: 65535
-    t.string   "url",                limit: 255
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-    t.boolean  "has_recommendation", limit: 1,     default: false
-    t.string   "img",                limit: 255
-    t.text     "content_html",       limit: 65535
+    t.integer  "category"
+    t.string   "title"
+    t.text     "summary"
+    t.text     "content"
+    t.string   "url"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.boolean  "has_recommendation", default: false
+    t.string   "img"
+    t.text     "content_html"
   end
 
   add_index "articles", ["category", "url"], name: "index_articles_on_category_and_url", unique: true, using: :btree
 
   create_table "recommended_articles", force: :cascade do |t|
-    t.integer  "article_id",         limit: 4
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.integer  "similar_article_id", limit: 4
+    t.integer  "article_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "similar_article_id"
   end
 
   add_index "recommended_articles", ["article_id"], name: "index_recommended_articles_on_article_id", using: :btree
 
   create_table "similar_articles", force: :cascade do |t|
-    t.integer  "category",   limit: 4
-    t.string   "title",      limit: 255
-    t.text     "summary",    limit: 65535
-    t.text     "content",    limit: 65535
-    t.string   "url",        limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "category"
+    t.string   "title"
+    t.text     "summary"
+    t.text     "content"
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "similar_articles", ["category", "url"], name: "index_similar_articles_on_category_and_url", unique: true, using: :btree

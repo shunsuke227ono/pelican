@@ -8,6 +8,14 @@ module FullContent
       Nokogiri::HTML(open(link)).css("p.ynDetailText").inner_text
     end
   end
+  def self.img_and_article_body(link)
+    # livedoorのみ
+    res = {}
+    page = Nokogiri::HTML(open(link))
+    res[:article_body] = page.at("[@itemprop='articleBody']").inner_text
+    res[:img] = page.at("[@itemprop='image']").attr('src') if page.at("[@itemprop='image']").present?
+    res
+  end
   def self.img_and_article_body_and_html(link)
     # livedoorのみ
     res = {}

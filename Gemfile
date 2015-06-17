@@ -1,11 +1,9 @@
 source 'https://rubygems.org'
 
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# Use postgresql as the database for Active Record
+gem 'pg'
 gem 'rails', '4.2.0'
-# Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
-gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -44,6 +42,8 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'rails_12factor', group: :production
+
 gem 'bootstrap-sass'
 gem 'rails_config'
 
@@ -53,7 +53,7 @@ gem 'feedjira'
 # use pry instead of irb in console
 gem 'pry-rails'
 
-gem 'mecab'
+gem 'mecab', '0.996'
 gem 'natto'
 
 gem 'matrix'
@@ -72,3 +72,4 @@ gem 'whenever'
 
 # decorator
 gem 'draper', '~> 1.3'
+ruby "2.1.4"
