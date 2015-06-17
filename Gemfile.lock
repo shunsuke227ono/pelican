@@ -209,7 +209,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   matrix
-  mecab
+  mecab (= 0.996)
   natto
   nokogiri
   pg
