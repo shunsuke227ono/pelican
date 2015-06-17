@@ -1,6 +1,8 @@
 <div class="sidebar-wrapper">
   <div class="sidebar-logo">
-    <%= image_tag('share/pelican_64.png') %>
+    <%= link_to root_path do %>
+      <%= image_tag('share/pelican_64.png') %>
+    <% end %>
   </div>
   <ul class="sidebar-list">
     <% Settings.rss.livedoor.each do |category| %>
