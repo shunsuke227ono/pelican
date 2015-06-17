@@ -43,6 +43,7 @@ body {
   text-align: center;
   &.active {
     background-color: $light_black_rock;
+    border-right: 8px solid $light_green;
     color: $solitude;
   }
 }
