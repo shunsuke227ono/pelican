@@ -17,10 +17,12 @@ $entryHeight: 240px;
   vertical-align: middle;
 }
 .entry-desc__title {
+  color: $black_rock;
   font-size: $font_medium;
 }
 .entry-desc__title--without-img {
-  font-size: $font_large;
+  color: $black_rock;
+  font-size: $font_medium;
   padding: 0 20px 0 40px;
 }
 .entry-desc__summary {
