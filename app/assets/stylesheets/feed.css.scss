@@ -17,13 +17,19 @@ $entryHeight: 240px;
   vertical-align: middle;
 }
 .entry-desc__title {
-  color: $black_rock;
+  color: $dark_blue;
   font-size: $font_medium;
+  &:hover {
+    color: $dark_green;
+  }
 }
 .entry-desc__title--without-img {
-  color: $black_rock;
+  color: $dark_blue;
   font-size: $font_medium;
   padding: 0 20px 0 40px;
+  &:hover {
+    color: $dark_green;
+  }
 }
 .entry-desc__summary {
   margin-top: 10px;
@@ -101,5 +107,14 @@ $entryHeight: 240px;
 }
 
 .pagination-wrapper {
+  ul li a {
+    color: $blue_stone;
+  }
   text-align: center;
+}
+.active-green {
+  a {
+    background-color: $light_green !important;
+    border-color: $light_green !important;
+  }
 }
