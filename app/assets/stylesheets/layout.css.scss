@@ -4,6 +4,9 @@ body {
   background-color: $solitude;
   color: $black_rock;
   min-width: 1000px;
+  a {
+    text-decoration: none;
+  }
 }
 
 .sidebar-wrapper {
