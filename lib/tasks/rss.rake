@@ -22,13 +22,13 @@ namespace :rss do
             article.update!(summary: entry_summary) if update_summary?(article, entry_summary)
           else
             img_and_article_body = FullContent.img_and_article_body_and_html(entry.url)
+            # FIXME htmlとるかこの方法そもそもhtml見ないか。
             article_attr = {
               category: category_id,
               title: only_text(entry.title),
               url: entry_url,
               summary: entry_summary[0..-11],
               content: img_and_article_body[:article_body],
-              content_html: img_and_article_body[:article_body_html],
               img: img_and_article_body[:img]
             }
             Article.create!(article_attr)
