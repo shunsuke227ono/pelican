@@ -1,7 +1,9 @@
 @import "share/setting";
 $entryHeight: 240px;
-.entry-container {
+.entry-panel {
   background-color: $lighter_white;
+}
+.entry-container {
   display: table;
   height: $entryHeight;
   max-height: $entryHeight;
@@ -17,6 +19,7 @@ $entryHeight: 240px;
   vertical-align: middle;
 }
 .entry-desc__title {
+  padding-right: 10px;
   color: $dark_blue;
   font-size: $font_medium;
   &:hover {
@@ -27,12 +30,14 @@ $entryHeight: 240px;
   color: $dark_blue;
   font-size: $font_medium;
   padding: 0 20px 0 40px;
+  color: $dark_blue;
   &:hover {
     color: $dark_green;
   }
 }
 .entry-desc__summary {
   margin-top: 10px;
+  padding-right: 10px;
 }
 .entry-desc__summary--without-img {
   margin-top: 10px;
@@ -45,7 +50,7 @@ $entryHeight: 240px;
   background-position: center;
   background-repeat: no-repeat;
   height: 180px;
-  margin: 30px 0;
+  margin: 30px -25px 30px 0;
 }
 .img-wrapper-table {
   display: table;

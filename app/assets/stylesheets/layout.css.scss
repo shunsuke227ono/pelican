@@ -17,15 +17,15 @@ body {
   z-index: 20;
 }
 .sidebar-logo {
-  width: 45px;
-  margin: 20px auto;
+  width: 40px;
+  margin: 14px auto;
   img {
     width: 100%;
   }
 }
 
 .sidebar-list {
-  margin: 80px 0;
+  margin: 60% 0;
   padding: 0;
 }
 .sidebar-list__link {
@@ -64,7 +64,14 @@ body {
   font-size: $font_large;
   @include calc-width-100(198px);
   text-align: center;
-  padding: 7px 0;
+  padding: 10px 0;
   position: fixed;
   z-index: 10;
+}
+.logo-wrapper {
+  margin: 0 auto;
+  width: 130px;
+  img {
+    width: 100%;
+  }
 }
