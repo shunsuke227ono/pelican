@@ -1,0 +1,22 @@
+rss:
+  livedoor:
+    top: { name: "TOP", url: "http://news.livedoor.com/topics/rss/top.xml" }
+    dom: { name: "国内", url: "http://news.livedoor.com/topics/rss/dom.xml" }
+    int: { name: "海外", url: "http://news.livedoor.com/topics/rss/int.xml" }
+    eco: { name: "IT経済", url: "http://news.livedoor.com/topics/rss/eco.xml" }
+    ent: { name: "芸能", url: "http://news.livedoor.com/topics/rss/ent.xml" }
+    spo: { name: "スポーツ", url: "http://news.livedoor.com/topics/rss/spo.xml" }
+    mov: { name: "映画", url: "http://news.livedoor.com/rss/summary/52.xml" }
+    gourmet: { name: "グルメ", url: "http://news.livedoor.com/topics/rss/gourmet.xml" }
+    love: { name: "女子", url: "http://news.livedoor.com/topics/rss/love.xml" }
+    trend: { name: "トレンド", url: "http://news.livedoor.com/topics/rss/trend.xml" }
+  yahoo:
+    spo: [  "http://headlines.yahoo.co.jp/rss/wordleaf-c_spo.xml",
+            "http://headlines.yahoo.co.jp/rss/ballball-c_spo.xml",
+            "http://headlines.yahoo.co.jp/rss/spnannex-c_spo.xml",
+            "http://headlines.yahoo.co.jp/rss/nkgendai-c_spo.xml",
+            "http://headlines.yahoo.co.jp/rss/scn-c_spo.xml",
+            "http://headlines.yahoo.co.jp/rss/san-c_spo.xml",
+            "http://headlines.yahoo.co.jp/rss/ykf-c_spo.xml"       ]
+
+sidebar: ["TOP", "国内", "海外", "IT経済", "芸能", "スポーツ", "映画", "グルメ", "女子", "トレンド"]

@@ -1,0 +1,5 @@
+@mixin calc-width-100($w) {
+  width:-webkit-calc(100% - #{$w});
+  width:-moz-calc(100% - #{$w});
+  width:calc(100% - #{$w});
+}

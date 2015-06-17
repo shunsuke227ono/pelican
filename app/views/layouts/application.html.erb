@@ -3,12 +3,18 @@
 <head>
   <title>Pelican</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'layout', media: 'all' %>
+  <%= stylesheet_link_tag    'feed', media: 'all' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <%= render partial: '/layouts/sidebar' %>
+  <div class="main-wrapper">
+    <%= render partial: '/layouts/header' %>
+    <div class="content-wrapper">
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>

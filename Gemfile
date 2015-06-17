@@ -1,18 +1,17 @@
 source 'https://rubygems.org'
 
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'rails', '4.2.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -45,4 +44,32 @@ end
 
 gem 'rails_12factor', group: :production
 
+gem 'bootstrap-sass'
+gem 'rails_config'
+
+# For parsing rss
+gem 'feedjira'
+
+# use pry instead of irb in console
+gem 'pry-rails'
+
+gem 'mecab'
+gem 'natto'
+
+gem 'matrix'
+
+gem 'tf_idf'
+
+gem 'nokogiri'
+
+gem 'kaminari'
+
+# Utility
+gem 'action_args'
+
+# 定期的にバッチ処理回すために
+gem 'whenever'
+
+# decorator
+gem 'draper', '~> 1.3'
 ruby "2.1.4"

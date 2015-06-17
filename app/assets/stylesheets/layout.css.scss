@@ -1,0 +1,67 @@
+@import "share/setting";
+@import "share/mixin";
+body {
+  background-color: $solitude;
+  color: $black_rock;
+  min-width: 1000px;
+}
+
+.sidebar-wrapper {
+  background-color: $black_rock;
+  height: 100%;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  width: 200px;
+  z-index: 20;
+}
+.sidebar-logo {
+  width: 45px;
+  margin: 20px auto;
+  img {
+    width: 100%;
+  }
+}
+
+.sidebar-list {
+  margin-top: 80px;
+  padding: 0;
+}
+.sidebar-list__link {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    .sidebar-list__link__item { background-color: $light_black_rock; }
+  }
+}
+.sidebar-list__link__item {
+  color: $light_gray;
+  display: block;
+  list-style-type: none;
+  padding: 15px 0;
+  text-align: center;
+  &.active {
+    background-color: $light_black_rock;
+    color: $solitude;
+  }
+}
+
+.main-wrapper {
+  @include calc-width-100(198px);
+  float: right;
+  position: relative;
+}
+.content-wrapper {
+  padding: 100px 80px;
+}
+
+.topbar {
+  background-color: $solitude;
+  @include calc-width-100(198px);
+  font-size: $font_large;
+  text-align: center;
+  padding: 5px 0;
+  position: fixed;
+  z-index: 10;
+}
