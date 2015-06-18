@@ -72,4 +72,7 @@ namespace :similarity do
   task :get_similar_articles_trend => :environment do
     set_similar_articles(:trend)
   end
+  task :test => :environment do
+    p "run!!suceesssss"
+  end
 end

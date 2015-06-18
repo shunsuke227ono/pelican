@@ -29,7 +29,6 @@ every :day, :at => '4:45pm' do
   rake "similarity:get_similar_articles_ent"
 end
 every :day, :at => '5:00pm' do
-  p "here"
   rake "rss:get_similar_spo"
 end
 every :day, :at => '5:15pm' do
