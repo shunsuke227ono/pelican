@@ -1,11 +1,17 @@
 require 'open-uri'
 module FullContent
-  def self.article_body(link, resource_name)
-    case resource_name
-    when :livedoor
+  def self.article_body(link)
+    case
+    when link.include?("livedoor")
       Nokogiri::HTML(open(link)).at("[@itemprop='articleBody']").inner_text
-    when :yahoo
+    when link.include?("rdsig.yahoo") || link.include?("zasshi.news.yahoo")
       Nokogiri::HTML(open(link)).css("p.ynDetailText").inner_text
+    when link.include?("entabe")
+      Nokogiri::HTML(open(link)).css("div.article-body").inner_text
+    when link.include?("mery")
+      Nokogiri::HTML(open(link)).at("[@itmprop='articleBody']").inner_text
+    when link.include?("spotlight")
+      Nokogiri::HTML(open(link)).at("[@itemprop='articleBody']").inner_text
     end
   end
   def self.img_and_article_body(link)
