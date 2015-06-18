@@ -68,4 +68,16 @@ rss:
              "http://headlines.yahoo.co.jp/rss/it_nlab-c_life.xml"
           ]
 
+num_of_comparisons:
+  #FIXME topも
+  top: 20 # 10*9
+  dom: 100
+  int: 100
+  eco: 100
+  ent: 100
+  spo: 140
+  mov: 80
+  gourmet: 50
+  love: 50
+  trend: 80
 sidebar: ["TOP", "国内", "海外", "IT経済", "芸能", "スポーツ", "映画", "グルメ", "女子", "トレンド"]
