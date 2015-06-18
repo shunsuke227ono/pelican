@@ -7,51 +7,47 @@ namespace :rss do
     article.summary != entry_summary
   end
   def store_similar_entries(category)
-    ActiveRecord::Base.transaction do
-      p "========= start get similar_article of #{category} =========="
-      Settings.rss.yahoo.try(category).each do |rss_url|
-        category_id = SimilarArticle.categories[category]
-        feed = Feedjira::Feed.fetch_and_parse rss_url
-        feed.entries.each do |entry|
-          next if SimilarArticle.find_by(category: category_id, url: entry.url).present?
-          SimilarArticle.create!(
-            category: category_id,
-            title: only_text(entry.title),
-            url: only_text(entry.url),
-            #summary: only_text(entry.summary),
-            content: FullContent.article_body(entry.url)
-          )
-        end
+    p "========= start get similar_article of #{category} =========="
+    Settings.rss.yahoo.try(category).each do |rss_url|
+      category_id = SimilarArticle.categories[category]
+      feed = Feedjira::Feed.fetch_and_parse rss_url
+      feed.entries.each do |entry|
+        next if SimilarArticle.find_by(category: category_id, url: entry.url).present?
+        SimilarArticle.create!(
+          category: category_id,
+          title: only_text(entry.title),
+          url: only_text(entry.url),
+          #summary: only_text(entry.summary),
+          content: FullContent.article_body(entry.url)
+        )
       end
     end
   end
   task :get_livedoor => :environment do
-    ActiveRecord::Base.transaction do
-      p "=========start get_livedoor=========="
-      Settings.rss.livedoor.each do |category_info|
-        category = category_info[0]
-        category_id = Article.categories[category]
-        url = category_info[1][:url]
-        feed = Feedjira::Feed.fetch_and_parse url
-        feed.entries.each do |entry|
-          entry_url = only_text(entry.url)
-          entry_summary = only_text(entry.summary)
-          article = Article.find_by(category: category_id, url: entry_url)
-          if article.present?
-            article.update!(summary: entry_summary) if update_summary?(article, entry_summary)
-          else
-            img_and_article_body = FullContent.img_and_article_body(entry.url)
-            # FIXME htmlとるかこの方法そもそもhtml見ないか。
-            article_attr = {
-              category: category_id,
-              title: only_text(entry.title),
-              url: entry_url,
-              summary: entry_summary[0..-11],
-              content: img_and_article_body[:article_body],
-              img: img_and_article_body[:img]
-            }
-            Article.create!(article_attr)
-          end
+    p "=========start get_livedoor=========="
+    Settings.rss.livedoor.each do |category_info|
+      category = category_info[0]
+      category_id = Article.categories[category]
+      url = category_info[1][:url]
+      feed = Feedjira::Feed.fetch_and_parse url
+      feed.entries.each do |entry|
+        entry_url = only_text(entry.url)
+        entry_summary = only_text(entry.summary)
+        article = Article.find_by(category: category_id, url: entry_url)
+        if article.present?
+          article.update!(summary: entry_summary) if update_summary?(article, entry_summary)
+        else
+          img_and_article_body = FullContent.img_and_article_body(entry.url)
+          # FIXME htmlとるかこの方法そもそもhtml見ないか。
+          article_attr = {
+            category: category_id,
+            title: only_text(entry.title),
+            url: entry_url,
+            summary: entry_summary[0..-11],
+            content: img_and_article_body[:article_body],
+            img: img_and_article_body[:img]
+          }
+          Article.create!(article_attr)
         end
       end
     end
