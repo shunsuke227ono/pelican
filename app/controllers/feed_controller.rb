@@ -6,9 +6,9 @@ class FeedController < ApplicationController
     else
       category_id = Article.categories[category.to_sym]
       if category == "spo"
-        @feed = Article.where(category: category_id, has_recommendation: true).order('created_at DESC').page(page).per(12)
+        @feed = Article.includes(:similar_articles).where(category: category_id, has_recommendation: true).order('created_at DESC').page(page).per(12)
       else
-        @feed = Article.where(category: category_id).order('created_at DESC').page(page).per(12)
+        @feed = Article.includes(:similar_articles).where(category: category_id).order('created_at DESC').page(page).per(12)
       end
     end
   end
