@@ -10,12 +10,12 @@ https://the-pelican.herokuapp.com
 
 ## アジェンダ
 
- 0. 使用したライブラリ・フレームワーク
- 1. アプリデモと仕様紹介
- 2. 関連記事を算出する仕組み
- 3. 表示高速化の工夫
+ 1. 使用したライブラリ・フレームワーク
+ 2. アプリデモと仕様紹介
+ 3. 関連記事を算出する仕組み
+ 4. 表示高速化の工夫
 
-# 0. 使用したライブラリ・フレームワーク
+# 1. 使用したライブラリ・フレームワーク
 
 ## バックエンド
 
@@ -37,13 +37,13 @@ https://the-pelican.herokuapp.com
 * whenever
   * cron jobsをシンプルに書くためのライブラリ
 
-# 1. アプリデモと仕様紹介
+# 2. アプリデモと仕様紹介
 
 ![-20150618 002](https://cloud.githubusercontent.com/assets/7357864/12077591/8aa9866c-b230-11e5-9532-7be1a661e20c.jpg)
 
 ![-20150618 003](https://cloud.githubusercontent.com/assets/7357864/12077592/8aac9bfe-b230-11e5-8334-b6f894c4c7c4.jpg)
 
-# 2. 関連記事を算出する仕組み
+# 3. 関連記事を算出する仕組み
 
 ![-20150618 006](https://cloud.githubusercontent.com/assets/7357864/12077593/a49ef62e-b230-11e5-9b40-46b52d6e8955.jpg)
 
@@ -75,7 +75,7 @@ https://the-pelican.herokuapp.com
 
 ![-20150618 016](https://cloud.githubusercontent.com/assets/7357864/12077603/a4cb5a84-b230-11e5-936b-e6e9612d768d.jpg)
 
-# 3. 表示の高速化の工夫
+# 4. 表示の高速化の工夫
 
 ![-20150618 018](https://cloud.githubusercontent.com/assets/7357864/12077605/b31d17d0-b230-11e5-99e1-3168d5d16061.jpg)
 
@@ -88,6 +88,8 @@ https://the-pelican.herokuapp.com
 ![-20150618 022](https://cloud.githubusercontent.com/assets/7357864/12077609/b32331d8-b230-11e5-940e-f5fffc5353af.jpg)
 
 ![-20150618 023](https://cloud.githubusercontent.com/assets/7357864/12077607/b321fbb0-b230-11e5-87fe-5ef3df004156.jpg)
+
+# UI/UX に関する補足
 
 ![-20150618 024](https://cloud.githubusercontent.com/assets/7357864/12077611/b33de8b6-b230-11e5-818f-7f7edc64453b.jpg)
 
