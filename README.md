@@ -53,9 +53,21 @@
 
 ![-20150618 008](https://cloud.githubusercontent.com/assets/7357864/12077596/a4a9f0b0-b230-11e5-8fcb-cf38b511f137.jpg)
 
+* (参考)選定されたRSSのURL一覧はgithub上のソースコードはこちら
+https://github.com/shunsuke227ono/pelican/blob/master/config/settings.yml
+* (参考)リソース選定をしたgithub上のイシューはこちら
+  * (スポーツ) https://github.com/shunsuke227ono/pelican/issues/36
+  * (スポーツ以外のカテゴリ) https://github.com/shunsuke227ono/pelican/issues/95
+
 ![-20150618 009](https://cloud.githubusercontent.com/assets/7357864/12077594/a4a5efd8-b230-11e5-9f80-50a62e7f367b.jpg)
 
+* バッチ処理のgithub上のソースコードはこちら
+  * https://github.com/shunsuke227ono/pelican/blob/master/lib/tasks/rss.rake
+
 ![-20150618 010](https://cloud.githubusercontent.com/assets/7357864/12077597/a4aa2062-b230-11e5-8d43-dbbc4dbf7e06.jpg)
+
+* cron設定のgithub上のソースコードはこちら
+  * https://github.com/shunsuke227ono/pelican/blob/master/config/schedule.rb
 
 ## キーワード抽出
 
@@ -63,13 +75,25 @@
 
 ![-20150618 012](https://cloud.githubusercontent.com/assets/7357864/12077599/a4bc5ed0-b230-11e5-8a61-d457bd990afa.jpg)
 
+* 形態素解析のgithub上のソースコードはこちら
+  * (バッチ処理) https://github.com/shunsuke227ono/pelican/blob/master/lib/tasks/similarity.rake
+  * (モジュール) https://github.com/shunsuke227ono/pelican/blob/master/app/models/concerns/natto_mecab.rb
+
 ![-20150618 013](https://cloud.githubusercontent.com/assets/7357864/12077600/a4c6e80a-b230-11e5-8f47-9db718340f8f.jpg)
+
+* tf-idf法計算メソッドを持ったクラスと、本文に対してtf-idf法を行っているバッチ処理を実装したソースコードはこちら
+  * (クラス)  https://github.com/shunsuke227ono/pelican/blob/master/app/models/concerns/tf_idf_calculation.rb
+  * (バッチ処理) https://github.com/shunsuke227ono/pelican/blob/master/lib/tasks/similarity.rake
 
 ## 文書ベクトルの類似度
 
 ![-20150618 014](https://cloud.githubusercontent.com/assets/7357864/12077601/a4c8279c-b230-11e5-85e5-5b3dad0e2457.jpg)
 
 ![-20150618 015](https://cloud.githubusercontent.com/assets/7357864/12077602/a4ca82b2-b230-11e5-9704-e86ad61d30cb.jpg)
+
+* コサイン距離測定はtf-idfクラス内のインスタンスメソッドで行い、それをバッチ処理中で使用する。github上のソースコードはこちら。
+  * (tf-idfクラス)  https://github.com/shunsuke227ono/pelican/blob/master/app/models/concerns/tf_idf_calculation.rb
+  * (類似度計算バッチ処理) https://github.com/shunsuke227ono/pelican/blob/master/lib/tasks/similarity.rake
 
 ## 補足
 
@@ -79,9 +103,13 @@
 
 ![-20150618 018](https://cloud.githubusercontent.com/assets/7357864/12077605/b31d17d0-b230-11e5-99e1-3168d5d16061.jpg)
 
+* ソースコードの該当箇所: https://github.com/shunsuke227ono/pelican/blob/master/app/controllers/feed_controller.rb#L8
+
 ![-20150618 019](https://cloud.githubusercontent.com/assets/7357864/12077608/b3226f3c-b230-11e5-8453-bf00af85fc70.jpg)
 
 ![-20150618 020](https://cloud.githubusercontent.com/assets/7357864/12077610/b3244bd6-b230-11e5-9411-2274e02f516f.jpg)
+
+* ソースコードの該当箇所: https://github.com/shunsuke227ono/pelican/blob/master/config/schedule.rb
 
 ![-20150618 021](https://cloud.githubusercontent.com/assets/7357864/12077606/b3219efe-b230-11e5-9071-5d956220a299.jpg)
 
