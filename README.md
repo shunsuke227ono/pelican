@@ -1,4 +1,4 @@
-https://the-pelican.herokuapp.com
+アプリのURL: https://the-pelican.herokuapp.com
 
 ※ サーバー代の都合で、最新記事の取り込みのcronは止めているため、記事はアップデートされていません。
 
