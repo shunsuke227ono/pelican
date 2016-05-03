@@ -11,6 +11,7 @@
 /log/*
 !/log/.keep
 /tmp
+.ruby-version
 
 config.secrets.yml
 config/settings.local.yml
